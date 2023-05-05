@@ -1,0 +1,27 @@
+Sight Words = [This, Could, That, Hat, Get, From]
+matched = []
+picks = []
+
+choose(positionOfWordCard) function:
+  If the number of picks is 2:
+    Do nothing (stop the player from choosing 3 word cards).
+  Add positionOfWordCard to picks.
+  If the number of picks is now 2:
+    check()
+
+check() function: 
+  If word card [picks[0]] is = to word card [picks[1]]:
+    Add positionOfWordCard to matched.
+    If all matches found (i.e. matched is the same word cards):
+      Game over.
+  Empty picks after a short delay.
+
+render() function:
+  For each word card:
+    When the card is clicked: choose(positionOfWordCard)
+    If picks includes positionOfWordCard:
+      Show word card  (faces[positionOfWordCard]).
+    Else:
+      Show word card back.
+    If matched includes word card:
+      Your Choice: Show word card or do not show word card (i.e. It has been removed from the board).
