@@ -1,41 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sight Words Memory</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="game.js" defer></script>
-</head>
-<body>
-  <div class="game">
-    <div class="controls">
-        <button>Start</button>
-        <div class="stats">
-            <div class="moves">0 moves</div>
-            <div class="timer">time: 0 sec</div>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sight Word Memory Game</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+  <body>
+    <h1>Sight Word Memory Game</h1>
+    <div class=“board-container">
     </div>
-    <div class="board-container">
-        <div class="board" data-dimension="4"></div>
-        <div class="win">You won!</div>
-        <div class="board" data-dimension="4">
-          <div class="boxes">
-              <div class="box-front"></div>
-        <div class="box-back"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-</div>
-
-</body>
+    <p>Score: <span class="score"></span></p>
+    <div class="actions">
+        <button onclick="restart()">Restart</button>
+    </div>
+    <script src="game.js" defer></script>
+  </body>
 </html>
+

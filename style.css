@@ -1,41 +1,82 @@
 body {
-  background-color: lightpink;
-  margin: 0;
+  min-height: 100vh;
+  min-width: 100vh;
+  background-color: pink;
+  color: magenta;
 }
 
-.box {
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+}
+
+.actions button {
+    padding: 8px 16px;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #ae278a;
+    color: lightpink;
+}
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+  grid-gap: 16px;
+  grid-template-columns: repeat(6, 140px);
+  grid-template-rows: repeat(2, calc(140px / 2 * 3));
+}
+
+.card {
+  height: calc(140px / 2 * 3);
+  width: 140px;
+  border-radius: 10px;
+  background-color: white;
   position: relative;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
 }
 
-.box-front,
-.box-back {
-    position: absolute;
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    background: palevioletred;
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+.front-image {
+  width: 60px;
+  height: 60px;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
     backface-visibility: hidden;
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
-.box-back {
-  font-size: 30pt;
-  text-align: center;
-  line-height: 100px;
-  background: magenta;
-  transform: rotateY(180deg) rotateZ(50deg);
-  user-select: none;
+.card .front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.box.flipped .box-front {
-  transform: rotateY(180deg) rotateZ(50deg);
+.card .back{
+  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='47.35' height='47.8' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(336, 70%, 60%, 1)'/><path d='m23.67 15 8.66-15 15.02 8.66-8.67 15.01Zm0-30 8.66 15 15.02-8.66-8.67-15.01zM0-8.33v17m47.35-17v17M15.01 0h17.32m-8.66 32.8 8.66 15 15.02-8.66-8.67-15.01zM0 39.47v17m47.35-17v17M15.01 47.8h17.32m-56-32.8L-15 0 0 8.65l-8.66 15.01Zm47.35 0L15 0 0 8.65l8.67 15.01Zm0-30L15 0 0-8.66l8.67-15.01Zm47.33 30L62.35 0 47.33 8.65 56 23.67ZM23.67 62.8l8.66-15 15.02 8.66-8.67 15.01zm47.34-30-8.66 15-15.02-8.66L56 24.13Zm-47.33 30L15 47.8 0 56.45l8.67 15.01Zm-47.35-30 8.67 15 15-8.65-8.66-15.01zm47.35 0L15 47.8 0 39.15l8.67-15.01Z'  stroke-width='1' stroke='hsla(300, 70%, 60%, 1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
 }
-
-.box.flipped .box-back {
-  transform: rotateY(0) rotateZ(0);
+.card .front {
+  transform: rotateY(180deg);
 }
-
 
