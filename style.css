@@ -30,7 +30,7 @@ p {
     color: lightpink;
 }
 
-.grid-container {
+.board-container {
   display: grid;
   justify-content: center;
   grid-gap: 16px;

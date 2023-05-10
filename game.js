@@ -1,11 +1,17 @@
 const boardContainer = document.querySelector('.board-container')
 let cards = [
-  { name: 'B1', img: 'https://i.imgur.com/p8ejsXM.png' },
-  { name: 'B2', img: 'https://i.imgur.com/efgP9Mm.png' },
-  { name: 'B3', img: 'https://i.imgur.com/Hp4b4OW.png' },
-  { name: 'B4', img: 'https://i.imgur.com/vqAvlip.png' },
-  { name: 'B5', img: 'https://i.imgur.com/O9LBr5L.png' },
-  { name: 'B6', img: 'https://i.imgur.com/ZNLQKqF.png' }
+  { name: 'B1', img: 'images/hat.png' },
+  { name: 'B1', img: 'images/hat.png' },
+  { name: 'B2', img: 'images/could.png' },
+  { name: 'B2', img: 'images/could.png' },
+  { name: 'B3', img: 'images/from.png' },
+  { name: 'B3', img: 'images/from.png' },
+  { name: 'B4', img: 'images/get.png' },
+  { name: 'B4', img: 'images/get.png' },
+  { name: 'B5', img: 'images/that.png' },
+  { name: 'B5', img: 'images/that.png' },
+  { name: 'B6', img: 'images/this.png' },
+  { name: 'B6', img: 'images/this.png' }
 ]
 let firstCard, secondCard
 let lockBoard = false
@@ -13,7 +19,7 @@ let score = 0
 
 document.querySelector('.score').textContent = score
 
-function shuffleCards() {
+const shuffleCards = () => {
   let currentIndex = cards.length,
     randomIndex,
     temporaryValue
@@ -26,14 +32,14 @@ function shuffleCards() {
   }
 }
 
-function generateCards() {
-  for (let card of cards) {
+const generateCards = () => {
+  for (card of cards) {
     const cardElement = document.createElement('div')
     cardElement.classList.add('card')
     cardElement.setAttribute('data-name', card.name)
     cardElement.innerHTML = `
       <div class="front">
-        <img class="front-image" src="${card.image}" />
+        <img class="front-image" src="${card.img}" />
       </div>
       <div class="back"></div>
     `
@@ -41,6 +47,9 @@ function generateCards() {
     cardElement.addEventListener('click', flipCard)
   }
 }
+
+generateCards()
+
 function flipCard() {
   if (lockBoard) return
   if (this === firstCard) return
@@ -64,4 +73,33 @@ function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name
 
   isMatch ? disableCards() : unflipCards()
+}
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard)
+  secondCard.removeEventListener('click', flipCard)
+
+  resetBoard()
+}
+
+function unflipCards() {
+  setTimeout(() => {
+    firstCard.classList.remove('flipped')
+    secondCard.classList.remove('flipped')
+    resetBoard()
+  }, 1000)
+}
+
+function resetBoard() {
+  firstCard = null
+  secondCard = null
+  lockBoard = false
+}
+
+function restart() {
+  resetBoard()
+  shuffleCards()
+  score = 0
+  document.querySelector('.score').textContent = score
+  boardContainer.innerHTML = ''
+  generateCards()
 }
