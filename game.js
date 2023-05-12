@@ -82,16 +82,18 @@ function checkForMatch() {
 
   isMatch ? disableCards() : unflipCards()
 }
+
 function disableCards() {
   firstCard.removeEventListener('click', flipCard)
   secondCard.removeEventListener('click', flipCard)
+
+  resetBoard()
 }
 
 function resetBoard() {
   firstCard = null
   secondCard = null
   lockBoard = false
-  resetBoard()
 }
 
 function restart() {
@@ -100,5 +102,5 @@ function restart() {
   score = 0
   document.querySelector('.score').textContent = score
   boardContainer.innerHTML = ''
-  restartBoard()
+  generateCards()
 }
