@@ -50,7 +50,7 @@ p {
   border-radius: 10px;
   background-color: pink;
   position: relative;
-  transform-style: rotate3d(1, 1, 1, 30deg);
+  transform-style: preserve-3d;
   transition: all 0.10s ease-in-out;
 }
 
