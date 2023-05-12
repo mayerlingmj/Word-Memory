@@ -12,7 +12,11 @@ let cards = [
   { name: 'B5', img: 'images/that.png' },
   { name: 'B5', img: 'images/that.png' },
   { name: 'B6', img: 'images/this.png' },
-  { name: 'B6', img: 'images/this.png' }
+  { name: 'B6', img: 'images/this.png' },
+  { name: 'B7', img: 'images/these.png' },
+  { name: 'B7', img: 'images/these.png' },
+  { name: 'B8', img: 'images/her.png' },
+  { name: 'B8', img: 'images/her.png' }
 ]
 let firstCard, secondCard
 let lockBoard = false
