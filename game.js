@@ -104,3 +104,4 @@ function restart() {
   boardContainer.innerHTML = ''
   generateCards()
 }
+document.querySelector('main').addEventListener('click', handleChoice)
