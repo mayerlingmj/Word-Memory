@@ -63,4 +63,4 @@ The objective of the game is to recall as many words as possible from the list. 
 
 #### Markdown Guide: [Guide](https://ia.net/writer/support/general/markdown-guide)
 
-### Sources: Fisher Yate, Rock-paper-scissors lab, OOP lab excersize
+### Sources: Fisher Yate, Rock-paper-scissors lab, OOP lab excersize, POD 3!
