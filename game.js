@@ -1,3 +1,4 @@
+//constants//
 const boardContainer = document.querySelector('.board-container')
 let cards = [
   { name: 'B1', img: 'images/hat.png' },
@@ -38,6 +39,7 @@ const generateCards = () => {
 generateCards()
 
 const shuffleCards = () => {
+  //Fisher Yates source
   let currentIndex = cards.length,
     randomIndex,
     temporaryValue
@@ -49,6 +51,10 @@ const shuffleCards = () => {
     cards[randomIndex] = temporaryValue
   }
 }
+//Functions get cards to do everything//
+
+//create flip card function//
+//easier when I seperated cards//
 
 function flipCard() {
   if (lockBoard) return
@@ -69,6 +75,8 @@ function flipCard() {
   checkForMatch()
 }
 
+//create unflipped card function//
+
 function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove('flipped')
@@ -83,6 +91,7 @@ function checkForMatch() {
   isMatch ? disableCards() : unflipCards()
 }
 
+// add event listeners//
 function disableCards() {
   firstCard.removeEventListener('click', flipCard)
   secondCard.removeEventListener('click', flipCard)
@@ -90,11 +99,15 @@ function disableCards() {
   resetBoard()
 }
 
+//get cards to reset and reload//
+
 function resetBoard() {
   firstCard = null
   secondCard = null
   lockBoard = false
 }
+
+//have the ability to restart once done//
 
 function restart() {
   resetBoard()
