@@ -62,3 +62,5 @@ The objective of the game is to recall as many words as possible from the list. 
 #### Markdown Cheatsheet: [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 
 #### Markdown Guide: [Guide](https://ia.net/writer/support/general/markdown-guide)
+
+### Sources: Fisher Yate, Rock-paper-scissors lab, OOP lab excersize
