@@ -1,5 +1,8 @@
 //constants//
+
 const boardContainer = document.querySelector('.board-container')
+
+//create card immage array to load//
 let cards = [
   { name: 'B1', img: 'images/hat.png' },
   { name: 'B1', img: 'images/hat.png' },
@@ -16,14 +19,19 @@ let cards = [
   { name: 'B7', img: 'images/these.png' },
   { name: 'B7', img: 'images/these.png' },
   { name: 'B8', img: 'images/her.png' },
-  { name: 'B8', img: 'images/her.png' }
+  { name: 'B8', img: 'images/her.png' },
+  { name: 'B9', img: 'images/boy.png' },
+  { name: 'B9', img: 'images/boy.png' }
 ]
+
+//declare cards
 let firstCard, secondCard
 let lockBoard = false
 let score = 0
 
 document.querySelector('.score').textContent = score
 
+//Must be able to generate cards//
 const generateCards = () => {
   for (card of cards) {
     const cardElement = document.createElement('div')
@@ -42,6 +50,7 @@ const generateCards = () => {
 
 generateCards()
 
+//get cards to shuffle around to make sure card position unpredictacble//
 const shuffleCards = () => {
   //Fisher Yates source
   let currentIndex = cards.length,
@@ -88,6 +97,8 @@ function unflipCards() {
     resetBoard()
   }, 1000)
 }
+
+// Check if card match//
 
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name
