@@ -39,7 +39,7 @@ p {
 .board-container {
   display: grid;
   justify-content: center;
-  grid-gap: 16px;
+  grid-gap: 20px;
   grid-template-columns: repeat(6, 140px);
   grid-template-rows: repeat(2, calc(140px / 2 * 3));
 }
@@ -55,8 +55,8 @@ p {
 }
 
 .front-image {
-  width: 120px;
-  height: 60px;
+  width: 110px;
+  height: 80px;
 }
 
 .card.flipped {
