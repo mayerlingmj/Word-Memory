@@ -3,12 +3,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('pattern.png');
+  background-image: url('images/pattern.png');
   background-size: 100%;
   min-height: 100vh;
   min-width: 100vh;
-  background-color: pink;
-  color: magenta;
+  /* background-color: pink; */
+  color: rgb(242, 8, 168);
 }
 
 h1 {
