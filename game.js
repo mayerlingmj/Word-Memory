@@ -19,19 +19,6 @@ let score = 0
 
 document.querySelector('.score').textContent = score
 
-const shuffleCards = () => {
-  let currentIndex = cards.length,
-    randomIndex,
-    temporaryValue
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex -= 1
-    temporaryValue = cards[currentIndex]
-    cards[currentIndex] = cards[randomIndex]
-    cards[randomIndex] = temporaryValue
-  }
-}
-
 const generateCards = () => {
   for (card of cards) {
     const cardElement = document.createElement('div')
@@ -49,6 +36,19 @@ const generateCards = () => {
 }
 
 generateCards()
+
+const shuffleCards = () => {
+  let currentIndex = cards.length,
+    randomIndex,
+    temporaryValue
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+    temporaryValue = cards[currentIndex]
+    cards[currentIndex] = cards[randomIndex]
+    cards[randomIndex] = temporaryValue
+  }
+}
 
 function flipCard() {
   if (lockBoard) return
@@ -69,18 +69,6 @@ function flipCard() {
   checkForMatch()
 }
 
-function checkForMatch() {
-  let isMatch = firstCard.dataset.name === secondCard.dataset.name
-
-  isMatch ? disableCards() : unflipCards()
-}
-function disableCards() {
-  firstCard.removeEventListener('click', flipCard)
-  secondCard.removeEventListener('click', flipCard)
-
-  resetBoard()
-}
-
 function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove('flipped')
@@ -89,10 +77,21 @@ function unflipCards() {
   }, 1000)
 }
 
+function checkForMatch() {
+  let isMatch = firstCard.dataset.name === secondCard.dataset.name
+
+  isMatch ? disableCards() : unflipCards()
+}
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard)
+  secondCard.removeEventListener('click', flipCard)
+}
+
 function resetBoard() {
   firstCard = null
   secondCard = null
   lockBoard = false
+  resetBoard()
 }
 
 function restart() {
@@ -101,5 +100,5 @@ function restart() {
   score = 0
   document.querySelector('.score').textContent = score
   boardContainer.innerHTML = ''
-  generateCards()
+  restartBoard()
 }
