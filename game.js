@@ -24,15 +24,27 @@ let cards = [
   { name: 'B9', img: 'images/boy.png' }
 ]
 
-//declare cards
 let firstCard, secondCard
 let lockBoard = false
 let score = 0
-
 document.querySelector('.score').textContent = score
+
+const shuffleCards = () => {
+  let currentIndex = cards.length,
+    randomIndex,
+    temporaryValue
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+    temporaryValue = cards[currentIndex]
+    cards[currentIndex] = cards[randomIndex]
+    cards[randomIndex] = temporaryValue
+  }
+}
 
 //Must be able to generate cards//
 const generateCards = () => {
+  shuffleCards()
   for (card of cards) {
     const cardElement = document.createElement('div')
     cardElement.classList.add('card')
@@ -47,49 +59,26 @@ const generateCards = () => {
     cardElement.addEventListener('click', flipCard)
   }
 }
-
 generateCards()
-
 //get cards to shuffle around to make sure card position unpredictacble//
-const shuffleCards = () => {
-  //Fisher Yates source
-  let currentIndex = cards.length,
-    randomIndex,
-    temporaryValue
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex -= 1
-    temporaryValue = cards[currentIndex]
-    cards[currentIndex] = cards[randomIndex]
-    cards[randomIndex] = temporaryValue
-  }
-}
-//Functions get cards to do everything//
 
+//Functions get cards to do everything//
 //create flip card function//
 //easier when I seperated cards//
-
 function flipCard() {
   if (lockBoard) return
   if (this === firstCard) return
-
   this.classList.add('flipped')
-
   if (!firstCard) {
     firstCard = this
     return
   }
-
   secondCard = this
-  score++
-  document.querySelector('.score').textContent = score
-  lockBoard = true
 
+  lockBoard = true
   checkForMatch()
 }
-
 //create unflipped card function//
-
 function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove('flipped')
@@ -97,33 +86,31 @@ function unflipCards() {
     resetBoard()
   }, 1000)
 }
-
 // Check if card match//
-
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name
 
-  isMatch ? disableCards() : unflipCards()
+  if (isMatch) {
+    score++
+    document.querySelector('.score').textContent = score
+    disableCards()
+  } else {
+    unflipCards()
+  }
 }
-
 // add event listeners//
 function disableCards() {
   firstCard.removeEventListener('click', flipCard)
   secondCard.removeEventListener('click', flipCard)
-
   resetBoard()
 }
-
 //get cards to reset and reload//
-
 function resetBoard() {
   firstCard = null
   secondCard = null
   lockBoard = false
 }
-
 //have the ability to restart once done//
-
 function restart() {
   resetBoard()
   shuffleCards()
